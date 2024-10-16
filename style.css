@@ -1,0 +1,232 @@
+:root {
+    --accent-color: black;
+    --acent-color-2: red;
+    --main-padding: 3rem 4rem 3rem 4rem;
+    --mobile-padding: 3rem 1rem 3rem 1rem;
+    --navbar-height: 136px;
+}
+
+.roboto-mono-1254 {
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: "Roboto Mono";
+}
+
+body{
+    background-color: white;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: absolute;
+    z-index: 2;
+    background-color: white;
+    height: auto;
+    width: 100vw;
+    overflow: hidden;
+    padding: var(--main-padding);
+    padding-top: 0px;
+    top: var(--navbar-height);
+    transition: top 0.5s ease-in-out;
+}
+
+.menu ul{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.hide{
+    top: 0px;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    padding: .5rem;
+}
+
+nav a:first-child{
+    background-color: black;
+    color: white;
+}
+
+nav{
+    padding: var(--main-padding);
+    font-size: 1.3rem;
+    display: block;
+    z-index: 3;
+    position: sticky;
+    background-color: white;
+    max-height: var(--navbar-height);
+}
+
+nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center
+}
+
+.wrapper{
+    margin: 0;
+    line-height: 2.5rem;
+}
+
+/* Main Gallery Section */
+
+.gallery{
+    display: grid;
+    width: 100vw;
+    padding: var(--main-padding);
+    padding-top: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: .5fr;
+    gap: 1rem;
+    overflow-y: auto;
+    background-color: white;
+}
+
+.gallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+}
+
+.gallery img:hover{
+    cursor: pointer;
+    opacity: .9;
+}
+
+.large-view{
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    background-color: white;
+}
+
+.large-image-info-container{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: calc(100% - 4rem);
+    transition: max-width .5s ease-in-out;
+}
+
+.slide-buttons-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.slide-buttons-container span:hover{
+    cursor: pointer;
+    background-color: #ebebeb;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.slide-buttons-container span:not(#close) {
+    flex: 1 0;
+}
+
+.slide-buttons-container span:first-child {
+    text-align: left;
+}
+
+.slide-buttons-container span:last-child {
+    text-align: right;
+}
+
+#close{
+    flex: 1 0;
+    text-align: center;
+}
+
+.large-image{
+    display: block;
+    margin: auto auto auto auto;
+    max-height: calc(100vh - 6rem);
+    max-width: 100%;
+}
+/**/
+
+@media only screen and (max-width: 1250px) {
+    .gallery{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .gallery{
+        padding: 0 2rem 3rem 2rem;
+    }
+
+    nav{
+        padding: 3rem 2rem 3rem 2rem;
+    }
+
+    .menu{
+        padding: 0rem 2rem 3rem 2rem;
+    }
+}
+
+@media only screen and (max-width:700px) {
+    .wrapper{
+        background-color: black;
+        width: min-content;
+        padding: .5rem;
+    }
+
+    .wrapper a{
+        padding: 0;
+    }
+
+    nav{
+        padding: var(--mobile-padding);
+        max-height: 232px; 
+    }
+
+    .menu{
+        top: 232px;
+        padding: 0 1rem 2rem 1rem
+    }
+
+    .hide{
+        top: 0px;
+    }
+
+    .gallery{
+        padding: var(--mobile-padding);
+        padding-top: 0;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-auto-rows: auto;
+    }
+
+    .large-image-info-container{
+        max-width: calc(100% - 2rem);
+    }
+}

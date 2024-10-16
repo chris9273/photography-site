@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /*Loads photos using data from load.php file, and handle photo clicks once photos are loaded*/
     window.onload = loadPhotos();
     function loadPhotos() {	
-        xhr.open("POST","https://photography-site-438818.nw.r.appspot.com/");
+        xhr.open("POST","https://photography-site-438818.nw.r.appspot.com/index.php");
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
                 if (xhr.readyState==4 && xhr.status==200) {

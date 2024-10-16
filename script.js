@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadPhotos() {	
         xhr.open("POST","https://photography-site-438818.appspot.com/");
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.setRequestHeader("Access-Control-Allow-Origin", "https://christophermillerphotography.com");
         xhr.onreadystatechange = function() {
                 if (xhr.readyState==4 && xhr.status==200) {
 

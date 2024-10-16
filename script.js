@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         let image = document.createElement("IMG"); //creates new image element
                         image.classList.add('gallery-item');
-                        image.setAttribute("src", "/photos/"+fileName);
+                        image.setAttribute("src", "https://photography-site-438818.nw.r.appspot.com/photos/"+fileName);
                         image.setAttribute("data-image", fileNameNoExtension);
                         image.setAttribute("data-index", i);
 

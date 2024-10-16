@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /*Loads photos using data from load.php file, and handle photo clicks once photos are loaded*/
     window.onload = loadPhotos();
     function loadPhotos() {	
-        xhr.open("POST","/load.php");
+        xhr.open("POST","http://data-cmp.infinityfreeapp.com/load.php");
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
                 if (xhr.readyState==4 && xhr.status==200) {

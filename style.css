@@ -25,6 +25,19 @@ body{
     background-color: white;
 }
 
+h1{
+    color: black;
+    font-size: 3rem;
+    margin: .5rem 0 .5rem 0;
+}
+
+p{
+    color: black;
+    font-size: 1rem;
+    max-width: 30rem;
+    text-transform: lowercase;
+}
+
 .menu{
     display: flex;
     flex-direction: column;
@@ -172,6 +185,14 @@ nav ul{
     max-height: calc(100vh - 6rem);
     max-width: 100%;
 }
+/**/
+
+/*About Page*/
+
+.about-content{
+    padding: var(--main-padding);
+}
+
 /**/
 
 @media only screen and (max-width: 1250px) {

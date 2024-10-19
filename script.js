@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         albumDiv.setAttribute("data-album-id", albumData[i].albumId);
 
                         let bgImg = document.createElement("IMG");
-                        bgImg.setAttribute('src', '/photos/'+albumData[i].name+'/'+albumData[i].files[0]);
+                        bgImg.setAttribute('src', 'https://photography-site-438818.nw.r.appspot.com/photos/'+albumData[i].name+'/'+albumData[i].files[0]);
 
                         let bgOverlay = document.createElement("DIV");
                         bgOverlay.classList.add('background-image-overlay');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             //CREATE NEW IMAGE ELEMENT
                             let image = document.createElement("IMG");
                             image.classList.add('gallery-item');
-                            image.setAttribute("src", "/photos/"+albumName+"/"+fileName);
+                            image.setAttribute("src", "https://photography-site-438818.nw.r.appspot.com/photos/"+albumName+"/"+fileName);
                             image.setAttribute("data-image", fileNameNoExtension);
                             image.setAttribute("data-index", globalIndex);
                             image.setAttribute("data--album-index", albumIndex);

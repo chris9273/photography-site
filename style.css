@@ -1,3 +1,57 @@
+#loading {
+    z-index: 999;
+    position: absolute;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,.8);
+    font-size: 5vw;
+    backdrop-filter: blur(10px);
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #000;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #000 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+
+/**/
+
+
 :root {
     --accent-color: black;
     --acent-color-2: red;
@@ -44,7 +98,7 @@ p{
     align-items: flex-end;
     justify-content: flex-start;
     position: absolute;
-    z-index: 2;
+    z-index: 7;
     background-color: white;
     height: auto;
     width: 100vw;
@@ -62,6 +116,10 @@ p{
     justify-content: center;
     gap: 1.5rem;
     font-size: 1.3rem;
+}
+
+.menu ul a:hover{
+    cursor: not-allowed;
 }
 
 .hide{
@@ -84,7 +142,7 @@ nav{
     padding: var(--main-padding);
     font-size: 1.3rem;
     display: block;
-    z-index: 3;
+    z-index: 8;
     position: sticky;
     background-color: white;
     max-height: var(--navbar-height);
@@ -136,7 +194,7 @@ nav ul{
     bottom: -100px;
     left: 0;
     right: 0;
-    z-index: 3;
+    z-index: 9;
     background-color: white;
 }
 
@@ -187,9 +245,104 @@ nav ul{
 }
 /**/
 
+/*Album Gallery*/
+
+.album-navigation{
+    display: none;
+    position: relative;
+    height: 2.5rem;
+    background-color: white;
+    color: black;
+    max-width: 100%;
+    font-size: 1.3rem;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--main-padding);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#change-view{
+    margin-right: 2rem;
+}
+
+#change-view:hover{
+    cursor: pointer;
+}
+
+.album-thumbnail {
+    display: flex;
+    padding: 2rem;
+    color: white;
+    font-size: 2rem;
+    font-weight: 900;
+    align-items: flex-start;
+    position: relative;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0) inset;
+    overflow: hidden;
+    /*background-position-y: -60px;*/
+    /*background-position-x: -20px;*/
+    /*background-size: auto 150%;*/
+    transition: font-size .5s ease-in-out, box-shadow .5s ease-in-out, background-size .5s ease-in-out;
+}
+
+.album-thumbnail:hover {
+    /*background-size: auto 160%;*/
+    cursor: pointer;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, .3) inset;
+    font-size: 2.4rem;
+}
+
+.album-thumbnail span{
+    background-color: #00000073;
+    padding: 0 .5rem 0 .5rem;
+    backdrop-filter: blur(5px);
+    z-index: 6;
+}
+
+.background-image-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+
+.album-thumbnail img{
+    transform: scale(1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: revert;
+    min-width: 100%;
+    transition: transform 0.5s cubic-bezier(.54,0,.45,1.01);
+}
+
+#album-nav-back{
+    background-color: rgba(0, 0, 0, 0.134);
+    padding: 0 .5rem .2rem .5rem;
+    margin: .3rem 1rem .3rem 0;
+    color: black;
+}
+
+#album-nav-back:hover{
+    cursor: pointer;
+    background-color: #000000b1;
+    color: white;
+}
+/*body:has(.album-thumbnail:hover) .background-image-overlay {
+    opacity: .1;
+}*/
+
+/**/
+
+
 /*About Page*/
 
-.about-content{
+.about-section{
     padding: var(--main-padding);
 }
 
@@ -212,6 +365,10 @@ nav ul{
 
     .menu{
         padding: 0rem 2rem 3rem 2rem;
+    }
+
+    .album-navigation{
+        padding: 0 2rem 0 2rem;
     }
 }
 
@@ -249,5 +406,11 @@ nav ul{
 
     .large-image-info-container{
         max-width: calc(100% - 2rem);
+    }
+
+    .album-navigation{
+        padding: var(--mobile-padding);
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }

@@ -1,9 +1,3 @@
----
-permalink: /404.html
-redirect_to:
-  - https://christophermillerphotography.com
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,19 +10,31 @@ redirect_to:
     <link href="/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div id="loading">
+		<p style="display: none;">Loading</p>
+		<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+	</div>
     <nav>
         <ul>
             <div class="wrapper"><a href="/">christopher miller photography</a></div>
-            <a id="menu_button">menu</a>
+            <div>
+                <span id="change-view">photo view</span>
+                <a id="menu_button">menu</a>
+            </div>       
         </ul>
     </nav>
     <div class="menu hide" id="menu">
         <ul>
-            <a style="cursor: not-allowed;">about</a>
-            <a style="cursor: not-allowed;">contact</a>
+            <a>about</a>
+            <a>contact</a>
         </ul>
     </div>
     <main>
+        <section id="album-navigation" class="album-navigation">
+            <span id="album-nav-back"><</span>
+            <span id="current-album-name"></span>
+        </section>
+
         <section class="gallery">
         </section>
         <div class="large-view" id="large-view">

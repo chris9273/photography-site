@@ -1,3 +1,7 @@
+var lazyLoadInstance = new LazyLoad({
+    // Your custom settings go here
+});
+
 const xhr = new XMLHttpRequest;
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -38,7 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         albumDiv.setAttribute("data-album-id", albumData[i].albumId);
 
                         let bgImg = document.createElement("IMG");
-                        bgImg.setAttribute('src', 'https://photography-site-438818.nw.r.appspot.com/photos/'+albumData[i].name+'/'+albumData[i].files[0]);
+                        /*bgImg.setAttribute('src', '/photos/'+albumData[i].name+'/'+albumData[i].files[0]);*/
+                        bgImg.setAttribute('data-src', 'https://photography-site-438818.nw.r.appspot.com/photos/'+albumData[i].name+'/'+albumData[i].files[0]);
+                        bgImg.classList.add('lazy');
 
                         let bgOverlay = document.createElement("DIV");
                         bgOverlay.classList.add('background-image-overlay');
@@ -69,7 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             //CREATE NEW IMAGE ELEMENT
                             let image = document.createElement("IMG");
                             image.classList.add('gallery-item');
-                            image.setAttribute("src", "https://photography-site-438818.nw.r.appspot.com/photos/"+albumName+"/"+fileName);
+                            //image.setAttribute("src", "/photos/"+albumName+"/"+fileName);
+                            image.setAttribute("data-src", "https://photography-site-438818.nw.r.appspot.com/photos/"+albumName+"/"+fileName);
+                            image.classList.add('lazy');
                             image.setAttribute("data-image", fileNameNoExtension);
                             image.setAttribute("data-index", globalIndex);
                             image.setAttribute("data--album-index", albumIndex);
@@ -104,9 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     //
                     
+                    lazyLoadInstance.update();
+
                     //Load Albums
                     //
                     
+                    const galleryContainer = document.querySelector('.gallery');
                     const galleryItems = document.querySelectorAll('.gallery-item');
                     const largeContainer = document.getElementById('large-view');
                     const largeImage = document.getElementById('large-image');
@@ -120,6 +131,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     let scrollPos = 0;
                     console.log(galleryItems);
+                    /* no work
+                    //Album View Mobile Mode
+                    function mobile(widthCheck) {
+                        if (widthCheck.matches) { // If media query matches
+                            if (currentView == 1) {
+                                console.log(currentView);
+                                galleryContainer.style.gridAutoRows = "350px";
+                            }
+                            else if (currentView == 0) {
+                                console.log(currentView);
+                                galleryContainer.style.gridAutoRows = "auto";
+                            }
+                        } else {
+                            galleryContainer.style.gridAutoRows = "350px";
+                        }
+                    }
+                    
+                    // Create a MediaQueryList object
+                    var widthCheck = window.matchMedia("(max-width: 700px)")
+                    
+                    // Call listener function at run time
+                    mobile(widthCheck);
+                    
+                    // Attach listener function on state changes
+                    changeViewButton.addEventListener("click", (e) => {
+                        mobile(widthCheck);
+                        widthCheck.addEventListener("change", function() {
+                            mobile(widthCheck);
+                        }); 
+                    });
+                    //
+                    */
 
                     //Album Hover
                     galleryItems.forEach(hoverItem => {

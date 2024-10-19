@@ -339,6 +339,14 @@ nav ul{
 
 /**/
 
+footer{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    height:3rem;
+    width:100%;
+    color: #747474;
+}
 
 /*About Page*/
 
@@ -401,7 +409,7 @@ nav ul{
         padding: var(--mobile-padding);
         padding-top: 0;
         grid-template-columns: repeat(1, minmax(0, 1fr));
-        grid-auto-rows: auto;
+        /*grid-auto-rows: auto;*/
     }
 
     .large-image-info-container{
